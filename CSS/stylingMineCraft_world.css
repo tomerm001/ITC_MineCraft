@@ -1,1 +1,28 @@
 /*CSS for the worldmap*/
+
+#container-world {
+
+    width: 80%;
+    height: auto;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}
+
+
+#container-world .cell {
+
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    background-color: blue;
+    background-size: cover;
+}
+
+#container-world .row {
+
+    margin: 0;
+    padding: 0;
+}
