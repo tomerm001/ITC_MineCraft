@@ -44,7 +44,7 @@ world.generateGrid = function (matrix, parrentID){
 
 
 
-};
+}
 
 //update grid (DOM) from Matrix
 world.updateGrid = function (matrix, elements){
@@ -81,29 +81,29 @@ world.updateGrid = function (matrix, elements){
     }
 
 
-};
+}
 
 
 
 // ==================
 
 
-var aMatrix = [];
-var rows = 100;
-var columns = 200;
+world.aMatrix = [];
+world.rows = 100;
+world.columns = 100;
 //rows and columns can be created dynamically based on user input
 
-function createMatrix(){
-    for (var i = 0; i < rows; i++) {
-        aMatrix.push([]);
-        for (var j = 0; j < columns; j++) {
-            aMatrix[i][j] = "";
+world.createMatrix = function(){
+    for (var i = 0; i < world.rows; i++) {
+        world.aMatrix.push([]);
+        for (var j = 0; j < world.columns; j++) {
+            world.aMatrix[i][j] = "";
         }
     }
-}
+};
 //create the overall matrix, can create different worlds based on this template
 
-function createWorldOne(matrix){
+world.createWorldOne = function(matrix){
     for (var i = 0; i < matrix.length; i++) {
         for (var j = 0; j < matrix[i].length; j++) {
             if (i > (matrix.length*0.5)) {
@@ -127,13 +127,13 @@ function createWorldOne(matrix){
             }
         }
     }
-}
+};
 //create a basic world
 
-createMatrix();
-createWorldOne(aMatrix);
+world.createMatrix();
+world.createWorldOne(world.aMatrix);
 
 var className =  "#container-world";
 
-world.generateGrid(aMatrix,className);
-world.updateGrid(aMatrix,elements);
+world.generateGrid(world.aMatrix,className);
+world.updateGrid(world.aMatrix,elements);
