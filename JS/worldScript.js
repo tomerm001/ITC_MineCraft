@@ -30,7 +30,7 @@ world.generateGrid = function (matrix, parrentID){
             newCell.addClass("cell"); //add class 
             
             //add unique id for cell
-            var value = "r" + (r+1) + " c" + (c+1);
+            var value = "r" + (r+1) + "c" + (c+1);
             newCell.attr('id', value);
 
             //append cell to row
@@ -89,31 +89,49 @@ world.updateGrid = function (matrix, elements){
 
 
 var aMatrix = [];
-var rows = 2;
-var columns = 2;
+var rows = 100;
+var columns = 200;
+//rows and columns can be created dynamically based on user input
 
-for (var i = 0; i < rows; i++){
-    aMatrix.push([])
-    for (var j = 0; j < columns; j++){
-        if (i>10) {
-            aMatrix[i][j] = "dirt";
+function createMatrix(){
+    for (var i = 0; i < rows; i++) {
+        aMatrix.push([]);
+        for (var j = 0; j < columns; j++) {
+            aMatrix[i][j] = "";
         }
     }
 }
+//create the overall matrix, can create different worlds based on this template
 
-[
-    [00,01,02],
-    [10,11,12],
-    [20,21,22]
-]
+function createWorldOne(matrix){
+    for (var i = 0; i < matrix.length; i++) {
+        for (var j = 0; j < matrix[i].length; j++) {
+            if (i > (matrix.length*0.5)) {
+                matrix[i][j] = "dirt";
+            }
+            else if (i > matrix.length*0.4 && i <= matrix.length*0.5) {
+                matrix[i][j] = "grass";
+            }
+            else if (i > matrix.length*0.35 && j > matrix[i].length*0.1 && j < matrix[i].length*0.2){
+                matrix[i][j] = "rock";
+            }
+            else if (i > matrix.length*0.2 && i <= matrix.length*0.4 && j == matrix[i].length*0.6){
+                matrix[i][j] = "tree";
+            }
+            else if (i > matrix.length*0.2 && i <= matrix.length*0.3 && j > matrix[i].length*0.5 && j < matrix[i].length*0.6
+                || i > matrix.length*0.2 && i <= matrix.length*0.3 && j > matrix[i].length*0.6 && j < matrix[i].length*0.7){
+                matrix[i][j] = "leaf";
+            }
+            else {
+                matrix[i][j] = "sky";
+            }
+        }
+    }
+}
+//create a basic world
 
-var aMatrix = [
-    ["dirt","dirt","dirt"],
-    ["leaf","leaf","leaf"],
-    ["rock","rock","rock"]
-];
-
-
+createMatrix();
+createWorldOne(aMatrix);
 
 var className =  "#container-world";
 
