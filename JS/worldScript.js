@@ -1,8 +1,15 @@
 // GENERATE DOM GRID
 
 //object / namespace for world variables and functions
-
 var world = {};
+
+//rows and columns can be created dynamically based on user input
+world.rows = 0;
+world.columns = 0;
+
+//container in dom
+world.className =  "#container-world";
+
 
 //generate empty grid based on matrix size
 world.generateGrid = function (matrix, parrentID){
@@ -83,17 +90,11 @@ world.updateGrid = function (matrix, elements){
 
 }
 
-
-
-// ==================
-
-
-world.aMatrix = [];
-world.rows = 100;
-world.columns = 100;
-//rows and columns can be created dynamically based on user input
-
+//create the blank matrix, can create different worlds based on this template
 world.createMatrix = function(){
+    
+    world.aMatrix = []; //add aMatrix to world object
+    
     for (var i = 0; i < world.rows; i++) {
         world.aMatrix.push([]);
         for (var j = 0; j < world.columns; j++) {
@@ -101,8 +102,8 @@ world.createMatrix = function(){
         }
     }
 };
-//create the overall matrix, can create different worlds based on this template
 
+//generate a basix world in the empty aMatrix
 world.createWorldOne = function(matrix){
     for (var i = 0; i < matrix.length; i++) {
         for (var j = 0; j < matrix[i].length; j++) {
@@ -128,12 +129,37 @@ world.createWorldOne = function(matrix){
         }
     }
 };
-//create a basic world
 
-world.createMatrix();
-world.createWorldOne(world.aMatrix);
+//adjust body size to fit all cells
+world.adjustBodySize = function () {
+    var cellDiv = $(".cell").first();
+    var widthDiv =  parseInt(cellDiv.css("width"));
 
-var className =  "#container-world";
+    var pixelSize = widthDiv * world.columns;
 
-world.generateGrid(world.aMatrix,className);
-world.updateGrid(world.aMatrix,elements);
+    $("body").css("width", pixelSize);
+
+
+}
+
+//init for world
+world.init = function(rows, columns){
+
+    //update global variables
+    world.rows = rows;
+    world.columns = columns;
+
+    //functions for matrix
+    world.createMatrix(); //generate an empty matrix
+    world.createWorldOne(world.aMatrix);  //populate empty matrix with a world
+
+    //functions vor DOM
+    world.generateGrid(world.aMatrix,world.className); //generate dom according to matrix size
+    world.updateGrid(world.aMatrix,elements);       //populate dom with matrix content 
+
+    world.adjustBodySize(); //adjust the body size
+}
+
+
+
+
