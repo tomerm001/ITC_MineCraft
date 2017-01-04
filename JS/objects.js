@@ -12,7 +12,7 @@ var elements = {
 elements.toolbox.axe = {
     src: "./Images/axe.png",
     interaction: 1,
-    type: 'tool'
+    type: 'tool',
 }
 
 elements.toolbox.pickaxe = {
