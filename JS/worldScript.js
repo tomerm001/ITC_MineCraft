@@ -1,26 +1,27 @@
 // GENERATE DOM GRID
 
-//object / namescpace for world variables and functions
+//object / namespace for world variables and functions
+
 var world = {};
 
 //generate empty grid based on matrix size
 world.generateGrid = function (matrix, parrentID){
 
-    //cheack length and width of martrix
+    //check length and width of martrix
     var amountOfRows = matrix.length;
     var amountOfCollumns = matrix[0].length;
 
     //get the dom container
     var container = $(parrentID);
 
-    //generare rows and cells
+    //generate rows and cells
     for(var r = 0; r < amountOfRows; r++){
 
         var newRow = $("<div></div>"); // create element
         newRow.addClass("row");
 
         //add unique row id
-        var value = "r" + (r+1)
+        var value = "r" + (r+1);
         newRow.attr('id', value);
 
         for(var c = 0; c < amountOfCollumns; c++){
@@ -29,7 +30,7 @@ world.generateGrid = function (matrix, parrentID){
             newCell.addClass("cell"); //add class 
             
             //add unique id for cell
-            var value = "r" + (r+1) + "c" + (c+1);
+            var value = "r" + (r+1) + " c" + (c+1);
             newCell.attr('id', value);
 
             //append cell to row
@@ -43,7 +44,7 @@ world.generateGrid = function (matrix, parrentID){
 
 
 
-}
+};
 
 //update grid (DOM) from Matrix
 world.updateGrid = function (matrix, elements){
@@ -80,14 +81,40 @@ world.updateGrid = function (matrix, elements){
     }
 
 
-}
+};
 
 
 
 // ==================
 
 
-var aMatrix = [ ["dirt",2] ,[2,"leaf"]  ,[2,"rock"]  ,[2,2]];
+var aMatrix = [];
+var rows = 2;
+var columns = 2;
+
+for (var i = 0; i < rows; i++){
+    aMatrix.push([])
+    for (var j = 0; j < columns; j++){
+        if (i>10) {
+            aMatrix[i][j] = "dirt";
+        }
+    }
+}
+
+[
+    [00,01,02],
+    [10,11,12],
+    [20,21,22]
+]
+
+var aMatrix = [
+    ["dirt","dirt","dirt"],
+    ["leaf","leaf","leaf"],
+    ["rock","rock","rock"]
+];
+
+
+
 var className =  "#container-world";
 
 world.generateGrid(aMatrix,className);
