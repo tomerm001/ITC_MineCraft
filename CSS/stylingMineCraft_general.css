@@ -4,6 +4,9 @@ body {
     margin: 0;
     padding: 0;
     line-height: 0;
-    text-align: center;
+    text-align: left;
+    overflow: auto;
+    width: 1500px;
+    position: relative;
 
 }
