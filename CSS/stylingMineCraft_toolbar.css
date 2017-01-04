@@ -1,2 +1,33 @@
 /*CSS for the toolbar Section*/
 
+#container-toolbar {
+
+    width: 20%;
+    height: auto;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+}
+
+#container-toolbar .tool {
+
+    width: 60px;
+    height: 60px;
+    display: block;
+    margin-left: 10px;
+    padding: 10px;
+}
+
+#container-toolbar .resource {
+
+    width: 40px;
+    height: 40px;
+    display: block;
+    margin-left: 10px;
+    padding: 10px;
+}
+
+#container-toolbar .counter {
+    
+}
