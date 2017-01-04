@@ -1,26 +1,27 @@
 // GENERATE DOM GRID
 
-//object / namescpace for world variables and functions
+//object / namespace for world variables and functions
+
 var world = {};
 
 //generate empty grid based on matrix size
 world.generateGrid = function (matrix, parrentID){
 
-    //cheack length and width of martrix
+    //check length and width of martrix
     var amountOfRows = matrix.length;
     var amountOfCollumns = matrix[0].length;
 
     //get the dom container
     var container = $(parrentID);
 
-    //generare rows and cells
+    //generate rows and cells
     for(var r = 0; r < amountOfRows; r++){
 
         var newRow = $("<div></div>"); // create element
         newRow.addClass("row");
 
         //add unique row id
-        var value = "r" + (r+1)
+        var value = "r" + (r+1);
         newRow.attr('id', value);
 
         for(var c = 0; c < amountOfCollumns; c++){
@@ -87,8 +88,52 @@ world.updateGrid = function (matrix, elements){
 // ==================
 
 
-var aMatrix = [ ["dirt",2] ,[2,"leaf"]  ,[2,"rock"]  ,[2,2]];
+world.aMatrix = [];
+world.rows = 100;
+world.columns = 100;
+//rows and columns can be created dynamically based on user input
+
+world.createMatrix = function(){
+    for (var i = 0; i < world.rows; i++) {
+        world.aMatrix.push([]);
+        for (var j = 0; j < world.columns; j++) {
+            world.aMatrix[i][j] = "";
+        }
+    }
+};
+//create the overall matrix, can create different worlds based on this template
+
+world.createWorldOne = function(matrix){
+    for (var i = 0; i < matrix.length; i++) {
+        for (var j = 0; j < matrix[i].length; j++) {
+            if (i > (matrix.length*0.5)) {
+                matrix[i][j] = "dirt";
+            }
+            else if (i > matrix.length*0.4 && i <= matrix.length*0.5) {
+                matrix[i][j] = "grass";
+            }
+            else if (i > matrix.length*0.35 && j > matrix[i].length*0.1 && j < matrix[i].length*0.2){
+                matrix[i][j] = "rock";
+            }
+            else if (i > matrix.length*0.2 && i <= matrix.length*0.4 && j == matrix[i].length*0.6){
+                matrix[i][j] = "tree";
+            }
+            else if (i > matrix.length*0.2 && i <= matrix.length*0.3 && j > matrix[i].length*0.5 && j < matrix[i].length*0.6
+                || i > matrix.length*0.2 && i <= matrix.length*0.3 && j > matrix[i].length*0.6 && j < matrix[i].length*0.7){
+                matrix[i][j] = "leaf";
+            }
+            else {
+                matrix[i][j] = "sky";
+            }
+        }
+    }
+};
+//create a basic world
+
+world.createMatrix();
+world.createWorldOne(world.aMatrix);
+
 var className =  "#container-world";
 
-world.generateGrid(aMatrix,className);
-world.updateGrid(aMatrix,elements);
+world.generateGrid(world.aMatrix,className);
+world.updateGrid(world.aMatrix,elements);
