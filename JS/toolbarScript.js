@@ -23,7 +23,11 @@ toolbar.generateToolbox = function() {
             backgroundPosition: "center center",
             backgroundSize: "cover"
         });
+        var textDiv = $("<div/>");
+        textDiv.addClass("text");
+        textDiv.text(tools[t]);
         $("#container-toolbar").append(toolDiv);
+        $("#container-toolbar").append(textDiv);
     }
 
 
@@ -49,7 +53,11 @@ toolbar.generateInventory = function() {
             backgroundPosition: "center center",
             backgroundSize: "cover"
         });
+        var textDiv = $("<div/>");
+        textDiv.addClass("text");
+        textDiv.text(resources[r]);
         $("#container-toolbar").append(resourceDiv);
+        $("#container-toolbar").append(textDiv);
     }
     
     
@@ -67,3 +75,10 @@ toolbar.currentInventory = {
 }
 
 
+
+toolbar.init = function() {
+    toolbar.generateToolbox();
+    toolbar.generateInventory();
+}
+
+toolbar.init();
