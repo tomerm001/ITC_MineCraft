@@ -12,18 +12,19 @@
 
 #container-world .cell {
 
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     display: inline-block;
     margin: 0;
     padding: 0;
     background-color: blue;
     background-size: cover;
+    overflow: none;
 }
 
 #container-world .row {
 
     margin: 0;
     padding: 0;
-    height: 30px;
+
 }

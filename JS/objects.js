@@ -3,7 +3,8 @@
 
 var elements = {
     toolbox: {},
-    resource: {}
+    resource: {},
+    trees: []
 }
 
 
@@ -56,3 +57,62 @@ elements.resource.tree = {
     interaction: 1,
     type: 'resource'
 }
+
+elements.trees[0] = [   ['leaf','leaf' ,'leaf'],
+                        ['leaf','leaf' ,'leaf'],
+                        ['leaf','leaf' ,'leaf'],
+                        ['leaf','leaf' ,'leaf'],
+                        ['leaf','leaf' ,'leaf'],
+                        ['sky','tree','sky'],
+                        ['sky','tree','sky'],
+                        ['sky','tree','sky'],
+                        ['sky','tree','sky'],
+                        ['sky','tree','sky'],
+                        ['sky','tree','sky']
+                    ]
+
+elements.trees[1] = [   ['sky','leaf' ,'leaf', 'leaf' ,'sky'],
+                        ['leaf','leaf' ,'leaf', 'leaf' ,'leaf'],
+                        ['leaf','leaf' ,'leaf', 'leaf' ,'leaf'],
+                        ['leaf','leaf' ,'leaf', 'leaf' ,'leaf'],
+                        ['leaf','leaf' ,'leaf', 'leaf' ,'leaf'],
+                        ['leaf','leaf' ,'leaf', 'leaf' ,'leaf'],
+                        ['sky','leaf' ,'leaf', 'leaf' ,'sky'],
+                        ['sky','sky','tree','sky','sky'],
+                        ['sky','sky','tree','sky','sky'],
+                        ['sky','sky','tree','sky','sky'],
+                        ['sky','sky','tree','sky','sky'],
+                        ['sky','sky','tree','sky','sky'],
+                        ['sky','sky','tree','sky','sky']
+                    ]
+
+elements.trees[2] = [   ['sky','leaf' ,'sky'],
+                        ['sky','leaf' ,'sky'],
+                        ['leaf','leaf' ,'leaf'],
+                        ['leaf','leaf' ,'leaf'],
+                        ['sky','leaf' ,'sky'],
+                        ['leaf','leaf' ,'leaf'],
+                        ['sky','leaf' ,'sky'],
+                        ['sky','tree','sky'],
+                        ['sky','tree','sky'],
+                        ['sky','tree','sky'],
+                        ['sky','tree','sky'],
+                        ['sky','tree','sky']
+                    ]
+
+
+elements.trees[3] = [   ['sky','leaf' ,'leaf', 'leaf' ,'leaf'],
+                        ['sky','leaf' ,'leaf', 'leaf' ,'leaf'],
+                        ['leaf','leaf' ,'leaf', 'leaf' ,'leaf'],
+                        ['sky','leaf' ,'leaf', 'leaf' ,'sky'],
+                        ['sky','leaf' ,'leaf', 'leaf' ,'sky'],
+                        ['leaf','leaf' ,'leaf', 'leaf' ,'sky'],
+                        ['leaf','leaf' ,'leaf', 'leaf' ,'sky'],
+                        ['sky','sky','tree','sky','sky'],
+                        ['sky','sky','tree','sky','sky'],
+                        ['sky','sky','tree','sky','sky'],
+                        ['sky','sky','tree','sky','sky'],
+                        ['sky','sky','tree','sky','sky'],
+                        ['sky','sky','tree','sky','sky'],
+                        ['sky','sky','tree','sky','sky']
+                    ]

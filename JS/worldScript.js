@@ -10,7 +10,6 @@ world.columns = 0;
 //container in dom
 world.className =  "#container-world";
 
-
 //generate empty grid based on matrix size
 world.generateGrid = function (matrix, parrentID){
 
@@ -139,11 +138,10 @@ world.adjustBodySize = function () {
 
     $("body").css("width", pixelSize);
 
-
 }
 
 //init for world
-world.init = function(rows, columns){
+world.init = function(rows, columns, option){
 
     //update global variables
     world.rows = rows;
@@ -151,7 +149,14 @@ world.init = function(rows, columns){
 
     //functions for matrix
     world.createMatrix(); //generate an empty matrix
-    world.createWorldOne(world.aMatrix);  //populate empty matrix with a world
+
+    //populate world according to template or worldRandomizer
+    switch(option){    
+        case "temp1":   world.createWorldOne(world.aMatrix);  //populate empty matrix with a world 
+                        break;
+        case "random":  worldRand.init();
+                        break;
+    }
 
     //functions vor DOM
     world.generateGrid(world.aMatrix,world.className); //generate dom according to matrix size
@@ -159,7 +164,3 @@ world.init = function(rows, columns){
 
     world.adjustBodySize(); //adjust the body size
 }
-
-
-
-
