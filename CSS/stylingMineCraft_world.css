@@ -2,7 +2,7 @@
 
 #container-world {
 
-    width: 80%;
+    width: auto;
     height: auto;
     display: inline-block;
     margin: 0;
@@ -25,4 +25,5 @@
 
     margin: 0;
     padding: 0;
+    height: 30px;
 }
