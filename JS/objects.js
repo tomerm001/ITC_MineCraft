@@ -4,7 +4,8 @@
 var elements = {
     toolbox: {},
     resource: {},
-    trees: []
+    trees: [],
+    stone: []
 }
 
 
@@ -57,6 +58,9 @@ elements.resource.tree = {
     interaction: 1,
     type: 'resource'
 }
+
+
+
 
 elements.trees[0] = [   ['leaf','leaf' ,'leaf'],
                         ['leaf','leaf' ,'leaf'],
@@ -112,7 +116,33 @@ elements.trees[3] = [   ['sky','leaf' ,'leaf', 'leaf' ,'leaf'],
                         ['sky','sky','tree','sky','sky'],
                         ['sky','sky','tree','sky','sky'],
                         ['sky','sky','tree','sky','sky'],
-                        ['sky','sky','tree','sky','sky'],
-                        ['sky','sky','tree','sky','sky'],
                         ['sky','sky','tree','sky','sky']
+                    ]
+
+elements.trees[4] = [ 
+                        ['sky','sky','leaf','sky','sky'],
+                        ['sky','leaf','leaf','leaf','sky'],
+                        ['leaf','leaf','leaf','leaf','sky'],
+                        ['leaf','leaf','leaf','leaf','leaf']
+                    ]
+
+
+elements.stone[0] = [ 
+                        ['rock','rock','rock'],
+                        ['rock','rock','rock']
+                    ]
+
+elements.stone[1] = [   
+                        ['rock','rock','dirt'],
+                        ['rock','rock','dirt'],
+                        ['dirt','rock','rock']
+                    ]
+
+elements.stone[2] = [   
+                        ['rock','rock'],
+                    ]
+
+elements.stone[3] = [   
+                        ['rock'],
+                        ['rock'],
                     ]

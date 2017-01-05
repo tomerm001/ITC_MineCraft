@@ -2,10 +2,10 @@
 worldRand = {
     worldHeight: 0,
     worldWidth: 0,
-    dirtHeightPercent: 0.3,
-    dirtMinToMax: 0.3,
-    treeDensity: 0.4,
-    stoneDensity: 0.10,
+    dirtHeightPercent: 0.35,
+    dirtMinToMax: 0.7,
+    treeDensity: 0.35,
+    stoneDensity: 0.50,
     cloudDensity: 0.10,
     maxHeightDirt: 0,
     minHeightDirt: 0,
@@ -65,13 +65,8 @@ worldRand.insertDirt = function() {
     }
 }
 
-//function for planting tree 
-worldRand.plantTree = function(positionX, treeType) {
-
-    var tree = treeType;
-    var treeHeight = tree.length;
-    var treeWidth = tree[0].length;
-
+//function to find dirt
+worldRand.findGround = function(positionX){
 
     //find ground 
     var groundIndex = 0;
@@ -86,6 +81,20 @@ worldRand.plantTree = function(positionX, treeType) {
             groundFound = true;
         }
     }
+    return groundIndex;
+}
+
+//function for planting tree 
+worldRand.plantTree = function(positionX, treeType) {
+
+    var tree = treeType;
+    var treeHeight = tree.length;
+    var treeWidth = tree[0].length;
+
+
+    //find ground 
+    var groundIndex = worldRand.findGround(positionX); //receive y index for dirt in world
+    
 
     //plant tree
     var startPosition = groundIndex - 1;
@@ -152,6 +161,113 @@ worldRand.plantRandomTrees = function(){
 
 }
 
+//add gras above dirt
+worldRand.plantGrass = function () {
+
+    var indexWidth = worldRand.worldWidth;
+
+    //move left to right in world
+    for(var j = 0; j < indexWidth; j++){
+        
+        var heightToPlant = worldRand.findGround(j);
+
+        world.aMatrix[heightToPlant][j] = 'grass';
+        
+    }
+
+
+
+}
+
+//Insert stone in specific location
+worldRand.insertStone = function (positionX, stoneType) {
+
+
+    var stone = stoneType;
+    var stoneHeight = stone.length;
+    var stoneWidth = stone[0].length;
+
+
+    //find y position
+    var centerLine = worldRand.minHeightDirt - 2;
+    var indexCenterLine = worldRand.worldHeight - centerLine;
+
+
+    //randomize y position
+    indexCenterLine = indexCenterLine + ( (Math.floor(Math.random() * 2) + 1) * (Math.floor(Math.random()*2) == 1 ? 1 : -1))
+
+
+
+    //insert stone
+    var startPosition = indexCenterLine - 1;
+    var topStone = centerLine - stoneHeight;
+    var contentSide = Math.floor(stoneWidth/2);
+
+    //plant tree ontop of dirt
+    var verticalPosStone = stoneHeight-1; //index of bottom row of matrix
+
+    for(var i = startPosition; i >= topStone; i--){
+
+        var positionMatrix = positionX - contentSide;
+
+        //x is x position in tree matrix
+        for(var x = 0; x < stoneWidth; x++){
+        
+            try{
+                world.aMatrix[i][positionMatrix] = stone[verticalPosStone][x];
+            }
+            catch(err){
+                console.log("Stone extends out of world");
+            }
+
+            positionMatrix++; //moving one position right in aMatrix 
+        }
+
+        verticalPosStone--; //going up a row in the tree matrix
+    }
+
+
+
+
+
+}
+
+
+//generate xcordinate to add stone
+worldRand.insertRandomStone = function (density, objectToInsert) {
+
+    var amountMax = worldRand.worldWidth / 4;
+    var actualAmount = amountMax * density;
+    var averageDistance  = worldRand.worldWidth / actualAmount;
+
+    var startPosition = Math.floor((Math.random() * 10) + 1);
+    
+    var insertPosition = startPosition;
+    var fits = true;
+    
+    while(fits){
+
+        //randomize the selected stone
+        var amountOfObjects = objectToInsert.length;
+        var objectTypeN = Math.floor(Math.random() * (amountOfObjects))
+        console.log(objectTypeN);
+
+        worldRand.insertStone(insertPosition, objectToInsert[objectTypeN]); //chaneg to stone
+
+        var positionMoveCalc = (averageDistance/2)  * Math.random();
+        positionMoveCalc *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
+        insertPosition = insertPosition + Math.ceil(averageDistance + positionMoveCalc);
+
+        if(insertPosition > (worldRand.worldWidth-4)){
+            fits = false;
+        }
+
+    }
+
+
+
+}
+
 //init for randomizer
 worldRand.init = function() {
     worldRand.updateVars(); //update height and width
@@ -159,6 +275,8 @@ worldRand.init = function() {
     worldRand.calculateMaxHeightStone(); //calculate the maxium height for stone
     worldRand.insertDirt(); //insert dirt to world
     worldRand.plantRandomTrees(); //insert random 
+    worldRand.plantGrass(); //plant gras on top layer of dirt
+    worldRand.insertRandomStone(worldRand.stoneDensity,elements.stone); //add rocks to ground
     
 }
 
