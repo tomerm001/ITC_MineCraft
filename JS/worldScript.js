@@ -134,7 +134,14 @@ world.adjustBodySize = function () {
     var cellDiv = $(".cell").first();
     var widthDiv =  parseInt(cellDiv.css("width"));
 
-    var pixelSize = widthDiv * world.columns;
+    var pixelSize = parseInt(widthDiv * world.columns);
+
+    //find width of html window - if html is smaller than pixelSize then use html
+    var htmlSize = window.innerWidth; //no parseInt because the result is a number
+    if(htmlSize < pixelSize) {
+        pixelSize = htmlSize;
+    }
+
 
     $("body").css("width", pixelSize);
 
