@@ -5,6 +5,15 @@ var toolbar = {};
 
 toolbar.currentlySelected = "";
 
+
+
+//get currently selected item from toolbar click
+toolbar.getCurrentItem = function() {
+    var clickCell = $(this).attr("id");
+    clickCell = toolbar.currentlySelected;
+}
+
+
 //generate toolbox container
 toolbar.generateToolbox = function() {
 
@@ -23,7 +32,12 @@ toolbar.generateToolbox = function() {
             backgroundPosition: "center center",
             backgroundSize: "cover"
         });
+
+        //append to container
         $("#container-toolbar").append(toolDiv);
+
+        //click event for tool
+        $(".tool").click(toolbar.getCurrentItem);
 
         // var textDiv = $("<div/>");
         // textDiv.addClass("text");
@@ -54,7 +68,12 @@ toolbar.generateInventory = function() {
             backgroundPosition: "center center",
             backgroundSize: "cover"
         });
+
+        //append to container
         $("#container-toolbar").append(resourceDiv);
+
+        //click event for resource
+        $(".resource").click(toolbar.getCurrentItem);
 
         // var textDiv = $("<div/>");
         // textDiv.addClass("text");
