@@ -1,12 +1,14 @@
 /*CSS for general*/
 
+
 body {
+    display: inline-block;
     margin: 0;
     padding: 0;
     line-height: 0;
     text-align: left;
     overflow: auto;
-    width: 1500px;
     position: relative;
+    background: url("../images/Minecraft_Background_Logo.png") no-repeat center center cover;
 
 }
