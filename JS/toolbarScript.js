@@ -3,7 +3,7 @@
 //toolbar namespace / object
 var toolbar = {};
 
-
+toolbar.currentlySelected = "";
 
 //generate toolbox container
 toolbar.generateToolbox = function() {
