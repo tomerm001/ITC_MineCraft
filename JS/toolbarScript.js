@@ -3,7 +3,18 @@
 //toolbar namespace / object
 var toolbar = {};
 
-toolbar.currentlySelected = "";
+toolbar.currentlySelected = "dirt";
+toolbar.currentInventory = {};
+
+//function to update currently slected item in the toolbar
+toolbar.updateCurrentlySelected = function () {
+
+    var idClickedElement = $(this).attr("id");
+    
+    toolbar.currentlySelected = idClickedElement;
+
+}
+
 
 
 
@@ -33,22 +44,20 @@ toolbar.generateToolbox = function() {
             backgroundSize: "cover"
         });
 
-        //append to container
+        //add event listener
+        toolDiv.click(toolbar.updateCurrentlySelected);
+
         $("#container-toolbar").append(toolDiv);
 
-        //click event for tool
-        $(".tool").click(toolbar.getCurrentItem);
 
         // var textDiv = $("<div/>");
         // textDiv.addClass("text");
         // textDiv.text(tools[t]);
         // $("#container-toolbar").append(textDiv);
     }
-
+   
 
 }
-
-
 
 //generate inventory container
 toolbar.generateInventory = function() {
@@ -69,37 +78,43 @@ toolbar.generateInventory = function() {
             backgroundSize: "cover"
         });
 
-        //append to container
+        //add event listener
+        resourceDiv.click(toolbar.updateCurrentlySelected);
+
         $("#container-toolbar").append(resourceDiv);
 
-        //click event for resource
-        $(".resource").click(toolbar.getCurrentItem);
+ 
 
         // var textDiv = $("<div/>");
         // textDiv.addClass("text");
         // textDiv.text(resources[r]);
         // $("#container-toolbar").append(textDiv);
     }
-    
-    
+     
+       
 }
 
 
+//generate toolbar currentInvetoryObject
+toolbar.generateInventoryObject = function () {
 
-//inventory
-toolbar.currentInventory = {
-    dirt: 0,
-    grass: 0,
-    leaf: 0,
-    rock: 0,
-    tree: 0
+    var arrayOfResources = Object.keys(elements.resource);
+
+    var amountOfReources =arrayOfResources.length;
+
+    for (var i = 0; i < amountOfReources; i++) {
+
+        toolbar.currentInventory[arrayOfResources[i]] = 0;
+
+    }
+
 }
 
-
+//  ============ INIT FUNCTION FOR TOOLBAR ===================
 
 toolbar.init = function() {
-    toolbar.generateToolbox();
-    toolbar.generateInventory();
+    toolbar.generateToolbox(); //generate toolBox DOM
+    toolbar.generateInventory(); //generate Inentory DOM
+    toolbar.generateInventoryObject(); //incllude all resources in inventoryObject
 }
 
-toolbar.init();
