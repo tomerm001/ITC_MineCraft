@@ -16,6 +16,15 @@ toolbar.updateCurrentlySelected = function () {
 }
 
 
+
+
+//get currently selected item from toolbar click
+toolbar.getCurrentItem = function() {
+    var clickCell = $(this).attr("id");
+    clickCell = toolbar.currentlySelected;
+}
+
+
 //generate toolbox container
 toolbar.generateToolbox = function() {
 
@@ -40,7 +49,6 @@ toolbar.generateToolbox = function() {
 
         $("#container-toolbar").append(toolDiv);
 
-   
 
         // var textDiv = $("<div/>");
         // textDiv.addClass("text");
@@ -69,12 +77,13 @@ toolbar.generateInventory = function() {
             backgroundPosition: "center center",
             backgroundSize: "cover"
         });
+
         //add event listener
         resourceDiv.click(toolbar.updateCurrentlySelected);
 
         $("#container-toolbar").append(resourceDiv);
 
-    
+ 
 
         // var textDiv = $("<div/>");
         // textDiv.addClass("text");
