@@ -4,7 +4,7 @@ worldRand = {
     worldWidth: 0,
     dirtHeightPercent: 0.35,
     dirtMinToMax: 0.5,
-    treeDensity: 0.3,
+    treeDensity: 0.30,
     stoneDensity: 0.30,
     cloudDensity: 0.10,
     maxHeightDirt: 0,
