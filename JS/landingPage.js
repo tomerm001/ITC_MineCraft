@@ -14,6 +14,9 @@ $(document).ready(function() {
         //fade out background
         $("#background-overlay").fadeOut("slow");
 
+        //update world Values
+        worldRand.updateRandValues();
+
         //initiate matrix and DOM
         world.init(25, 50, "random"); //rows , colu, ("random", "temp1")
 

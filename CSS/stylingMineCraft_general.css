@@ -53,3 +53,17 @@ body {
     z-index: 2000;
     cursor: pointer;
 }
+
+#background-overlay #range-container{
+    text-align: center;
+    position: fixed;
+    display: inline-block;
+    top: 500px;
+    left: 32%;
+    z-index: 2000;
+}
+
+#background-overlay .rangeInput{
+
+width: 500px;
+}
