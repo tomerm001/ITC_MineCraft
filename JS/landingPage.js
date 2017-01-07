@@ -1,23 +1,24 @@
-// var landingPage = {};
+var landingPage = {};
 
 
-// //show background image
-// $(document).ready(function() {
-//     $("#background-overlay").show();
-//     $("#container-world").hide();
-//     $("#container-toolbar").hide();
-// });
+//show background image
+$(document).ready(function() {
+
+    //initiate background
+    $("#background-overlay").show();
 
 
-// //new game button
-// landingPage.newGameButton = function() {
-    
-//     //when game button is clicked, fade out image, show world and toolbar
-//     $("button").click(function () {
-//         $("html").fadeOut();
-//         $("#background-overlay").fadeOut();
-//         $("#container-world").show();
-//         $("#container-toolbar").show();
-// });
+    //when game button is clicked, fade out image, show world and toolbar
+    $(".new-game-btn").click(function () {
 
-// }
+        //fade out background
+        $("#background-overlay").fadeOut("slow");
+
+        //initiate matrix and DOM
+        world.init(25, 50, "random"); //rows , colu, ("random", "temp1")
+
+        //initiate toolbar
+        toolbar.init();
+    });
+});
+
