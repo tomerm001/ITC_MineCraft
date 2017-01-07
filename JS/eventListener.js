@@ -47,7 +47,6 @@ world.processClick = function (currentSelected, clickedObj, rowIndex, colIndex) 
 
 //update inventory (action 'add' or 'remove')
 world.updateInventory = function (item, action){
-
     //get current inventory level of item
     var amountItem = toolbar.currentInventory[item];
 
@@ -67,8 +66,7 @@ world.updateInventory = function (item, action){
             }
             break;
     }
-
-
+    $("#" + item + "").text(toolbar.currentInventory[item]);
 }
 
 //function execute
@@ -101,6 +99,7 @@ world.executeClick = function (action, rowIndex, colIndex, selectedItem) {
         case 'add':
             //update inventory (remove to inventory)
             var inventoryLevel = world.updateInventory(selectedItem, 'remove');
+
 
             if(inventoryLevel != 'empty'){
                 //add item to matrix
@@ -167,3 +166,22 @@ world.clickWorld = function() {
      
 
 }
+
+
+
+
+// //TOOLBAR NEW GAME BUTTON
+// world.newGame = function() {
+
+//     $("#newGame").click(function () {
+
+//             //initiate matrix and DOM
+//             world.init(25, 50, "random"); //rows , colu, ("random", "temp1")
+
+//             //initiate toolbar
+//             toolbar.init();
+
+//     });
+
+// }
+

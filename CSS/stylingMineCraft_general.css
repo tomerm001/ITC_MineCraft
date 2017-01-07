@@ -9,12 +9,6 @@
 
 }
 
-/*html { 
-  background: url(../images/Minecraft_Background_Logo.png) no-repeat center center fixed; 
-  background-size: cover;
-  z-index: 1;
-}*/
-
 body {
     display: inline-block;
     margin: 0;
@@ -25,7 +19,23 @@ body {
     position: relative;
 }
 
-/*#background-overlay .new-game-btn {
+
+/*  background: url(../images/Minecraft_Background_Logo.png) no-repeat center center fixed; 
+    background-size: cover; */
+
+
+#background-overlay img {
+    max-width: 100%;
+    max-height: auto;
+    top: 0; 
+    left: 0; 
+    margin: auto;
+    position: relative; 
+    z-index: 1000;
+}
+
+
+#background-overlay .new-game-btn {
     height: 50px;
     width: 200px;
     position: fixed;
@@ -38,6 +48,8 @@ body {
     font-weight: normal;
     font-style: normal;
     text-align: center;
-    background-color: #6b6b6b;
+    background-color: #aea4a2;
     color: #000000;
-}*/
+    z-index: 2000;
+    cursor: pointer;
+}

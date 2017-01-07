@@ -6,27 +6,23 @@ var toolbar = {};
 toolbar.currentlySelected = "dirt";
 toolbar.currentInventory = {};
 
+
 //function to update currently slected item in the toolbar
 toolbar.updateCurrentlySelected = function () {
 
-    var idClickedElement = $(this).attr("id");
-    
+    var idClickedElement = $(this).attr("id");   
     toolbar.currentlySelected = idClickedElement;
-
+    console.log(idClickedElement);
 }
 
-
-
-
-//get currently selected item from toolbar click
-toolbar.getCurrentItem = function() {
-    var clickCell = $(this).attr("id");
-    clickCell = toolbar.currentlySelected;
-}
 
 
 //generate toolbox container
 toolbar.generateToolbox = function() {
+
+    // //main tool div
+    // var tMain = $("<div/>");
+    // tMain.attr("id", "tMain");
 
     //get array of tools
     var tools = Object.keys(elements.toolbox);
@@ -47,21 +43,39 @@ toolbar.generateToolbox = function() {
         //add event listener
         toolDiv.click(toolbar.updateCurrentlySelected);
 
+        // $("#tMain").append(toolDiv);
         $("#container-toolbar").append(toolDiv);
 
-
-        // var textDiv = $("<div/>");
-        // textDiv.addClass("text");
-        // textDiv.text(tools[t]);
-        // $("#container-toolbar").append(textDiv);
     }
+    
    
 
 }
 
+
+//change background color onclick,toggle class
+toolbar.selectedItem = function() {
+    $(".tool").click(function() {
+        $('div').removeClass("selected");
+        $(this).addClass("selected"); 
+
+    });
+
+    $(".resource").click(function() {
+        $('div').removeClass("selected");
+        $(this).addClass("selected"); 
+
+    });
+}
+
+
 //generate inventory container
 toolbar.generateInventory = function() {
     
+    // //main resource div
+    // var rMain = $("<div/>");
+    // rMain.attr("id", "rMain");
+
     //get array of resources
     var resources = Object.keys(elements.resource);
     console.log(resources);
@@ -81,14 +95,9 @@ toolbar.generateInventory = function() {
         //add event listener
         resourceDiv.click(toolbar.updateCurrentlySelected);
 
+        // $("#rMain").append(resourceDiv);
         $("#container-toolbar").append(resourceDiv);
 
- 
-
-        // var textDiv = $("<div/>");
-        // textDiv.addClass("text");
-        // textDiv.text(resources[r]);
-        // $("#container-toolbar").append(textDiv);
     }
      
        
@@ -103,18 +112,48 @@ toolbar.generateInventoryObject = function () {
     var amountOfReources =arrayOfResources.length;
 
     for (var i = 0; i < amountOfReources; i++) {
-
         toolbar.currentInventory[arrayOfResources[i]] = 0;
+        $("#" + arrayOfResources[i] + "").text("0");
 
     }
+    
+}
+
+
+//new game button
+toolbar.newGameBtn = function() {
+
+    // var btnDiv = $("<div/>");
+    // btnDiv.attr("id", "toolbarBtn");
+
+    var btn = $("<button/>");
+    btn.attr("id", "newGame");
+    btn.text("New Game");
+    // $("#toolbarBtn").append(btn);
+    $("#container-toolbar").append(btn);
+
+
+    $("#newGame").click(function () {
+
+            //initiate matrix and DOM
+            world.init(25, 50, "random"); //rows , colu, ("random", "temp1")
+
+            //initiate toolbar
+            toolbar.init();
+
+    });
 
 }
+
 
 //  ============ INIT FUNCTION FOR TOOLBAR ===================
 
 toolbar.init = function() {
+    $("#container-toolbar").html("");
     toolbar.generateToolbox(); //generate toolBox DOM
     toolbar.generateInventory(); //generate Inentory DOM
     toolbar.generateInventoryObject(); //incllude all resources in inventoryObject
+    toolbar.selectedItem(); //toggles class onclick for css properties
+    toolbar.newGameBtn(); //loads new game btn on toolbar
 }
 

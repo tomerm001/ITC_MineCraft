@@ -157,6 +157,9 @@
 
     world.init = function(rows, columns, option){
 
+        //clear container
+        $("#container-world").html("");
+
         //update global variables
         world.rows = rows;
         world.columns = columns;

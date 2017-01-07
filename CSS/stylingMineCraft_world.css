@@ -3,7 +3,7 @@
 #container-world {
 
     width: auto;
-    height: auto;
+    min-height: 100%;
     display: inline-block;
     margin: 0;
     padding: 0;
@@ -20,7 +20,13 @@
     background-color: #9ed6ff;
     background-size: cover;
     overflow: none;
+    /*cursor: pointer;*/
 }
+
+/*#container-world .row .cell:hover {
+    
+    border: 1px solid #FFFFFF;
+}*/
 
 #container-world .row {
 
