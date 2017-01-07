@@ -13,6 +13,28 @@ worldRand = {
     minHeightStone: 0
 }
 
+//update worldRand values
+worldRand.updateRandValues = function(){
+
+    var valueTree = $("#rangeTree").val();
+    var valueRock = $("#rangeRock").val();
+    var valueGround = $("#rangeGround").val();
+    var valuePeak = $("#rangePeak").val();
+
+    worldRand.treeDensity = valueTree / 100;
+    worldRand.stoneDensity = valueRock / 100;
+    worldRand.dirtMinToMax = valuePeak / 100;
+    
+    if(valueGround > 85){ 
+         worldRand.dirtHeightPercent = 85/100;
+        }
+    else{
+        worldRand.dirtHeightPercent = valueGround/100;
+    }
+    
+}
+
+
 //update wolrdHeight and worldWidth
 worldRand.updateVars = function() {
     worldRand.worldHeight = world.rows;
