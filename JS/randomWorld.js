@@ -20,6 +20,7 @@ worldRand.updateRandValues = function(){
     var valueRock = $("#rangeRock").val();
     var valueGround = $("#rangeGround").val();
     var valuePeak = $("#rangePeak").val();
+    var valueSize = $("#rangeSize").val();
 
     worldRand.treeDensity = valueTree / 100;
     worldRand.stoneDensity = valueRock / 100;
@@ -31,7 +32,7 @@ worldRand.updateRandValues = function(){
     else{
         worldRand.dirtHeightPercent = valueGround/100;
     }
-    
+    world.worldSize = valueSize * 4;
 }
 
 

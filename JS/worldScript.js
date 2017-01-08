@@ -5,9 +5,12 @@
     //object / namespace for world variables and functions
     var world = {};
 
+    //default world size
+    world.worldSize = 50;
+
     //rows and columns can be created dynamically based on user input
     world.rows = 0;
-    world.columns = 0;
+    world.columns =0;
 
     //container in dom
     world.className =  "#container-world";
@@ -103,7 +106,7 @@
 
         //find width of html window - if html is smaller than pixelSize then use html
         var htmlSize = window.innerWidth; //no parseInt because the result is a number
-        if(htmlSize < pixelSize) {
+        if(htmlSize > pixelSize) {
             pixelSize = htmlSize;
         }
 
@@ -164,6 +167,9 @@
         world.rows = rows;
         world.columns = columns;
 
+        //update world size
+        // worldRand.updateRandValues();
+
         //functions for matrix
         world.createMatrix(); //generate an empty matrix
 
@@ -179,6 +185,7 @@
         world.generateGrid(world.aMatrix,world.className); //generate dom according to matrix size
         world.updateGrid(world.aMatrix,elements);       //populate dom with matrix content 
 
+        // $(window).resize(world.adjustBodySize);
         world.adjustBodySize(); //adjust the body size
 
         
