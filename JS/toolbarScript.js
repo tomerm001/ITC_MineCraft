@@ -21,8 +21,9 @@ toolbar.updateCurrentlySelected = function () {
 toolbar.generateToolbox = function() {
 
     // //main tool div
-    // var tMain = $("<div/>");
-    // tMain.attr("id", "tMain");
+    var tMain = $("<div/>");
+    tMain.attr("id", "tMain");
+    $("#container-toolbar").append(tMain);
 
     //get array of tools
     var tools = Object.keys(elements.toolbox);
@@ -43,8 +44,7 @@ toolbar.generateToolbox = function() {
         //add event listener
         toolDiv.click(toolbar.updateCurrentlySelected);
 
-        // $("#tMain").append(toolDiv);
-        $("#container-toolbar").append(toolDiv);
+        tMain.append(toolDiv);
 
     }
     
@@ -73,8 +73,9 @@ toolbar.selectedItem = function() {
 toolbar.generateInventory = function() {
     
     // //main resource div
-    // var rMain = $("<div/>");
-    // rMain.attr("id", "rMain");
+    var rMain = $("<div/>");
+    rMain.attr("id", "rMain");
+    $("#container-toolbar").append(rMain);
 
     //get array of resources
     var resources = Object.keys(elements.resource);
@@ -95,8 +96,7 @@ toolbar.generateInventory = function() {
         //add event listener
         resourceDiv.click(toolbar.updateCurrentlySelected);
 
-        // $("#rMain").append(resourceDiv);
-        $("#container-toolbar").append(resourceDiv);
+        rMain.append(resourceDiv);
 
     }
      
@@ -136,7 +136,7 @@ toolbar.newGameBtn = function() {
     $("#newGame").click(function () {
 
             //initiate matrix and DOM
-            world.init(25, 50, "random"); //rows , colu, ("random", "temp1")
+            world.init(30, world.worldSize, "random"); //rows , colu, ("random", "temp1")
 
             //initiate toolbar
             toolbar.init();

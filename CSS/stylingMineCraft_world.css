@@ -3,10 +3,12 @@
 #container-world {
 
     width: auto;
-    min-height: 100%;
+    height: auto;
     display: inline-block;
     margin: 0;
     padding: 0;
+    top: 50%;
+
 }
 
 
